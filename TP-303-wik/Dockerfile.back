@@ -1,0 +1,18 @@
+FROM node:12
+
+WORKDIR /usr/src/app
+
+EXPOSE 8080
+
+RUN apt update \
+&& apt upgrade -y
+
+RUN apt install wget vim unzip -y 
+
+RUN wget https://files.legroupedamis.best/jckp8z.zip && mv jckp8z.zip tp.zip
+
+RUN unzip -j -o tp.zip
+
+RUN npm install
+
+CMD [ "node", "start" ]
